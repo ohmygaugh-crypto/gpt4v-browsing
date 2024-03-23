@@ -6,7 +6,17 @@ import fs from 'fs';
 
 puppeteer.use(StealthPlugin());
 
-const openai = new OpenAI();
+// OpenAI API Key (should be stored securely in a production environment)
+// Load environment variables
+import dotenv from 'dotenv';
+dotenv.config();
+
+// Access the API key
+const openaiApiKey = process.env.OPENAI_API_KEY;
+
+// Use the API key
+// For example, when setting up the OpenAI client
+const openai = new OpenAI({ apiKey: openaiApiKey });
 const timeout = 8000;
 
 async function image_to_base64(image_file) {
